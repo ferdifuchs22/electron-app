@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Hello from Electron renderer!</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+  </head>
+  <body>
+    <div class="full-layout">
+      <div class="banner">
+        <div class="team-bans">
+          <div class="ban-box" id="blue-ban-1">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Aatrox.png" />
+          </div>
+          <div class="ban-box" id="blue-ban-2">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Ahri.png" />
+          </div>
+          <div class="ban-box" id="blue-ban-3">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Akali.png" />
+          </div>
+          <div class="ban-box" id="blue-ban-4">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Akshan.png" />
+          </div>
+          <div class="ban-box" id="blue-ban-5">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Alistar.png" />
+          </div>
+        </div>
+        <div class="team-bans">
+          <div class="ban-box" id="red-ban-1">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Amumu.png" />
+          </div>
+          <div class="ban-box" id="red-ban-2">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Anivia.png" />
+          </div>
+          <div class="ban-box" id="red-ban-3">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Annie.png" />
+          </div>
+          <div class="ban-box" id="red-ban-4">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Aphelios.png" />
+          </div>
+          <div class="ban-box" id="red-ban-5">
+            <img src="dragontail-13.13.1\13.13.1\img\champion\Ashe.png" />
+          </div>
+        </div>
+      </div>
+      <div class="banner">
+        <p class="team-header">Ally Team Current theme source: <strong id="theme-source">System</strong></p>
+        <p class="team-header">Enemy Team</p>
+      </div>
+      <div class="main-content">
+        <div class="team-picks">
+          <div class="pick-box pick-box-left" id="blue-pick-1">
+            <div class="champion-portrait">
+              <img
+                src="dragontail-13.13.1\13.13.1\img\champion\AurelionSol.png"
+              />
+            </div>
+            <div class="champion-role">TOP</div>
+          </div>
+          <div class="pick-box pick-box-left" id="blue-pick-2">
+            <div class="champion-portrait"></div>
+            <div class="champion-role">JUNGLE</div>
+          </div>
+          <div class="pick-box pick-box-left" id="blue-pick-3">
+            <div class="champion-portrait"></div>
+            <div class="champion-role">MID</div>
+          </div>
+          <div class="pick-box pick-box-left" id="blue-pick-4">
+            <div class="champion-portrait"></div>
+            <div class="champion-role">BOT</div>
+          </div>
+          <div class="pick-box pick-box-left" id="blue-pick-5">
+            <div class="champion-portrait"></div>
+            <div class="champion-role">SUPPORT</div>
+          </div>
+        </div>
+        <div class="display-section">
+          <div class="display-buttons">
+            <button id="show-recommendation">RECOMMENDATION</button>
+            <button id="show-all">ALL CHAMPS</button>
+          </div>
+          <div class="display-recommendations" id="recommendations">
+            <div class="recommendation">
+              <div class="champion-name">
+                <div class="champion-name-text">RELL</div>
+              </div>
+              <div class="champion-portrait">
+                <img src="dragontail-13.13.1\13.13.1\img\champion\Rell.png" />
+              </div>
+              <div class="recommendation-text">SYNNERGY WITH</div>
+            </div>
+            <div class="recommendation">
+              <div class="champion-name">
+                <div class="champion-name-text">SONA</div>
+              </div>
+              <div class="champion-portrait">
+                <img src="dragontail-13.13.1\13.13.1\img\champion\Sona.png" />
+              </div>
+              <div class="recommendation-text">SYNNERGY WITH</div>
+            </div>
+            <div class="recommendation">
+              <div class="champion-name">
+                <div class="champion-name-text">LUX</div>
+              </div>
+              <div class="champion-portrait">
+                <img src="dragontail-13.13.1\13.13.1\img\champion\Lux.png" />
+              </div>
+              <div class="recommendation-text">SYNNERGY WITH</div>
+            </div>
+          </div>
+          <div class="display-all" id="all">
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+            <div class="all-champion-selector">
+              <div class="all-champion-box"></div>
+              <div class="all-champion-name">CHAMP</div>
+            </div>
+          </div>
+          <div class="submit-button">
+            <button id="confirm-champ-selection">CONFIRM</button>
+          </div>
+        </div>
+        <div class="team-picks">
+          <div class="pick-box pick-box-right" id="red-pick-1">
+            <div class="champion-role">TOP</div>
+            <div class="champion-portrait">
+              <img src="dragontail-13.13.1\13.13.1\img\champion\Azir.png" />
+            </div>
+          </div>
+          <div class="pick-box pick-box-right" id="red-pick-2">
+            <div class="champion-role">JUNGLE</div>
+            <div class="champion-portrait">
+              <img src="dragontail-13.13.1\13.13.1\img\champion\Bard.png" />
+            </div>
+          </div>
+          <div class="pick-box pick-box-right" id="red-pick-3">
+            <div class="champion-role">MID</div>
+            <div class="champion-portrait"></div>
+          </div>
+          <div class="pick-box pick-box-right" id="red-pick-4">
+            <div class="champion-role">BOT</div>
+            <div class="champion-portrait"></div>
+          </div>
+          <div class="pick-box pick-box-right" id="red-pick-5">
+            <div class="champion-role">SUPPORT</div>
+            <div class="champion-portrait"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

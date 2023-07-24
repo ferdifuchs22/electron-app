@@ -1,0 +1,188 @@
+:root {
+    color-scheme: light dark;
+}
+  
+@media (prefers-color-scheme: dark) {
+    body { background: #333; color: white; }
+}
+  
+@media (prefers-color-scheme: light) {
+    body { background: #ddd; color: black; }
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.full-layout{
+    height: 100%;
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid;
+    height: 7.5%;
+    box-sizing: border-box;
+}
+
+.team-bans{
+    display: flex;
+    margin: auto 5px auto 5px;
+}
+
+.ban-box{
+    margin: 5px;
+    border: solid;
+    height: 25px;
+    width: 25px;
+}
+
+.ban-box img{
+    height: 25px;
+}
+
+.team-header{
+    margin: auto 5px auto 5px;
+}
+
+.main-content{
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+}
+
+.team-picks{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.pick-box{
+    flex: 1;
+    border: solid;
+    display: flex;
+    justify-content: space-between;
+    border-top: 0px;
+}
+
+.pick-box-left{
+    border-left: 0px;
+}
+
+.pick-box-right{
+    border-right: 0px;
+}
+
+.champion-portrait{
+    border: solid;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin: auto 10px auto 10px;
+}
+
+.champion-portrait img{
+    height: 70px;
+    border-radius: inherit;
+}
+
+.champion-role{
+    margin: auto 10px auto 10px;
+    font: small-caps bold 20px sans-serif;
+}
+
+.display-section{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.display-buttons{
+    flex: 1;
+    margin: auto;
+    display: flex;
+}
+
+.display-buttons button{
+    margin: auto 20px auto 20px;
+    padding: 10px 40px 10px 40px;
+}
+
+.display-recommendations{
+    flex: 6;
+    display: flex;
+    justify-content: space-around;
+}
+
+.recommendation{
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    width: 23%;
+}
+
+.recommendation .champion-portrait{
+    margin: auto;
+    width: 100px;
+    height: 100px;
+}
+
+.recommendation .champion-portrait img{
+    height: 100px;
+    border-radius: inherit;
+}
+
+.champion-name{
+    flex: 1;
+    display: flex;
+}
+
+.champion-name-text{
+    margin: auto;
+}
+
+.recommendation-text{
+    margin-top: 15px;
+    flex: 5;
+}
+
+.display-all{
+    margin: auto;
+    width: 600px;
+    flex: 6;
+    display: none;
+    grid-template-columns: repeat(6, 1fr);
+    overflow: auto;
+    grid-auto-rows: 60px;
+}
+
+.all-champion-selector{
+    height: 50px;
+    width: 50px;
+    margin: auto;
+}
+.all-champion-box{
+    margin: auto;
+    border: solid;
+    height: 40px;
+    width: 40px;
+}
+
+.all-champion-name{
+    font-size: 10px;
+    text-align: center;
+}
+
+.submit-button{
+    flex: 2;
+    margin: auto;
+}
+
+.submit-button button{
+    margin-top: 30px;
+    padding: 10px 40px 10px 40px;
+}
