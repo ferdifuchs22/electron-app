@@ -14,12 +14,12 @@ const createWindow = () => {
     },
   });
 
-  createSession();
+  createSession(win);
 
   win.loadFile("index.html");
 };
 
-const createSession = async () => {
+const createSession = async (window) => {
 
   const ws = await leagueConnect.createWebSocketConnection({
     authenticationOptions: {
@@ -31,19 +31,19 @@ const createSession = async () => {
 
   ws.subscribe('/lol-champ-select/v1/session', async (data, event) => {
     await champ_select_handler.handle(event)
-      .catch((err) => {
-        console.log(err)
-      })
-      .then((res) => {
+      .catch(err => console.log(err))
+      .then(res => {
+        //console.log("res" + res)
         if(res == null){
           return
         }
-        console.log(res)
+        time = res["data"]["timer"]["adjustedTimeLeftInPhase"]
+        console.log("AHOIIII")
+        window.webContents.send('update-timer', time)
       })
-    
   })
 
-  ws.on('message',() => {
+  ws.on('message', message => {
     if(!connected){
       console.log("CONNECTED TO CLIENT")
       connected = true
@@ -90,8 +90,23 @@ ipcMain.handle("dark-mode:toggle", () => {
   return nativeTheme.shouldUseDarkColors;
 });
 
-ipcMain.handle("dark-mode:system", () => {
+ipcMain.handle("dark-mode:system", async () => {
   nativeTheme.themeSource = "system";
+
+  const lolcredentials = await leagueConnect.authenticate({
+    awaitConnection: true,
+    pollInterval: 5000,
+  });
+  const response = await leagueConnect.createHttp1Request(
+    {
+      method: "GET",
+      url: `/lol-champ-select/v1/all-grid-champions`,
+    },lolcredentials
+  );
+
+  res = response
+  
+  return res.json()
 });
 
 ipcMain.handle("dark-mode:confirmChamp", async (event, champ_id) => {

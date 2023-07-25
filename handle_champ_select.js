@@ -7,19 +7,10 @@ module.exports = {
       return null
     }
     if (event["eventType"] == "Update") {
-      const lolcredentials = await leagueConnect.authenticate({
-        awaitConnection: true,
-        pollInterval: 5000,
-      });
-      const response = await leagueConnect.createHttp1Request(
-        {
-          method: "GET",
-          url: `/lol-champ-select/v1/all-grid-champions`,
-        },
-        /*session,*/ lolcredentials
-      );
-
-      return response.json()
+      if(event == null){
+        return
+      }
+      return event
       // session.close();
     }
     if (event["eventType"] == "Delete") {
