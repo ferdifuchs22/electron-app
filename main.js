@@ -3,7 +3,12 @@ const path = require("path");
 const leagueConnect = require("league-connect");
 const champ_select_handler = require("./handle_champ_select")
 
+/* --------------------------------------------------------------------*/
+var state = null
 var connected = false
+var actions = null;
+var localPlayerId = null;
+var myTeam = null;
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -37,9 +42,14 @@ const createSession = async (window) => {
         if(res == null){
           return
         }
+        
+        state = res["data"]
+        myTeam = (res["data"]["myTeam"])
         time = res["data"]["timer"]["adjustedTimeLeftInPhase"]
-        console.log("AHOIIII")
+        localPlayerId = res["data"]["localPlayerCellId"]
+        actions = res["data"]["actions"]
         window.webContents.send('update-timer', time)
+        window.webContents.send('champ-select-info', state)
       })
   })
 
@@ -58,24 +68,93 @@ const createSession = async (window) => {
 
 }
 
+function firstUncompletedPickAction() {
+  if(actions == null || localPlayerId == null){
+    console.log("NOACTIONORPLAYERID")
+    return
+  }
+  const allActions = Array.prototype.concat(actions);
+  console.log(allActions[0])
+  myact = allActions.filter(x => x["type"] === "pick" && x["actorCellId"] === localPlayerId && !x["completed"])[0]
+  console.log("MYACT" + myact)
+  return myact
+}
 
-const http1PickHero = async (champ_id) => {
+function currentTurn() {
+  if(!state || state["timer"]["phase"] !== "BAN_PICK") return null;
+  return state["actions"].filter(x => x.filter(y => !y["completed"]).length > 0)[0];
+}
+
+function nextTurn() {
+  if(!state || state["timer"]["phase"] !== "BAN_PICK") return null;
+  return state["actions"].filter(x => x.filter(y => !y["completed"]).length > 0)[1];
+}
+
+function getActions(playerId, future = false) {
+  console.log("GETTING ACTIONS")
+  const turn = future ? nextTurn() : currentTurn();
+  console.log("TURN " + turn)
+  return turn ? turn.filter(x => x["actorCellId"] === playerId)[0] || null : null;
+}
+
+
+const http1PickHero = async (champ_id, completed) => {
+  if(localPlayerId == null){
+    console.log("NOPLAYERID")
+    return;
+  }
+  const act = getActions(localPlayerId);
+
+  const lolcredentials = await leagueConnect.authenticate({
+    awaitConnection: true,
+    pollInterval: 5000,
+  })
+  let localBody = {
+    "completed": completed,
+    "championId": champ_id
+  }
+  //const session = await leagueConnect.createHttpSession(lolcredentials);
+  const response = await leagueConnect.createHttp1Request({
+    method: "PATCH",
+    url: `/lol-champ-select/v1/session/actions/`+act.id,
+    body: localBody
+  }, /*session,*/ lolcredentials)
+  .catch(err => {
+    console.log(err)
+  })
+
+  console.log(response.json())
+  // session.close();
+}
+
+const http1HoverHero = async (champ_id) => {
+
+  const firstUncompletedPick = firstUncompletedPickAction();
+  if(firstUncompletedPick == null){
+    console.log("NOUNCOMPLETEDFIRSTPICK")
+    return;
+  } 
+
+  console.log("UNCOMPLETEDPICKID: " + firstUncompletedPick.id)
+
   const lolcredentials = await leagueConnect.authenticate({
     awaitConnection: true,
     pollInterval: 5000,
   })
   console.log(champ_id)
   let localBody = {
-    "completed": true,
-    "type": 'pick',
+    "completed": false,
     "championId": champ_id
   }
   //const session = await leagueConnect.createHttpSession(lolcredentials);
   const response = await leagueConnect.createHttp1Request({
     method: "PATCH",
-    url: `/lol-champ-select/v1/session/actions/1`,
+    url: `/lol-champ-select/v1/session/actions/`+firstUncompletedPick.id,
     body: localBody
   }, /*session,*/ lolcredentials)
+  .catch(err => {
+    console.log(err)
+  })
 
   //console.log(response)
   // session.close();
@@ -102,7 +181,10 @@ ipcMain.handle("dark-mode:system", async () => {
       method: "GET",
       url: `/lol-champ-select/v1/all-grid-champions`,
     },lolcredentials
-  );
+  )
+  .catch(err => {
+    console.log(err);
+  });
 
   res = response
   
@@ -110,7 +192,13 @@ ipcMain.handle("dark-mode:system", async () => {
 });
 
 ipcMain.handle("dark-mode:confirmChamp", async (event, champ_id) => {
-  http1PickHero(champ_id);
+  http1PickHero(champ_id, true);
+})
+
+ipcMain.handle("update-selected-champ", async (event, champ_id) => {
+  //http1HoverHero(champ_id);
+  http1PickHero(champ_id, false);
+  return champ_id
 })
 
 app.whenReady().then(async () => {
@@ -122,6 +210,8 @@ app.whenReady().then(async () => {
     }
   });
 });
+
+
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
