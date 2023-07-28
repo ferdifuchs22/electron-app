@@ -8,7 +8,6 @@ var state = null
 var connected = false
 var actions = null;
 var localPlayerId = null;
-var myTeam = null;
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -48,7 +47,7 @@ const createSession = async (window) => {
         time = res["data"]["timer"]["adjustedTimeLeftInPhase"]
         localPlayerId = res["data"]["localPlayerCellId"]
         actions = res["data"]["actions"]
-        window.webContents.send('update-timer', time)
+        //window.webContents.send('update-timer', time)
         window.webContents.send('champ-select-info', state)
       })
   })
@@ -91,9 +90,7 @@ function nextTurn() {
 }
 
 function getActions(playerId, future = false) {
-  console.log("GETTING ACTIONS")
   const turn = future ? nextTurn() : currentTurn();
-  console.log("TURN " + turn)
   return turn ? turn.filter(x => x["actorCellId"] === playerId)[0] || null : null;
 }
 
@@ -122,8 +119,6 @@ const http1PickHero = async (champ_id, completed) => {
   .catch(err => {
     console.log(err)
   })
-
-  console.log(response.json())
   // session.close();
 }
 
@@ -134,8 +129,6 @@ const http1HoverHero = async (champ_id) => {
     console.log("NOUNCOMPLETEDFIRSTPICK")
     return;
   } 
-
-  console.log("UNCOMPLETEDPICKID: " + firstUncompletedPick.id)
 
   const lolcredentials = await leagueConnect.authenticate({
     awaitConnection: true,
