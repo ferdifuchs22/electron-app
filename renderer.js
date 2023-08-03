@@ -289,8 +289,6 @@ document
     
   });
 
-
-
 var countDownTime
 var x
 window.darkMode.updateTime((event, value) => {
@@ -309,26 +307,39 @@ window.darkMode.updateTime((event, value) => {
 })
 
 window.darkMode.champSelectInfo((event, value) => {
+  allActions = value["actions"].flat()
+  const bannedChamps = allActions.filter(x => x.type === "ban" && x.completed).map(x => x.championId);
+  
   var blue_counter = 0;
   for(member in value["myTeam"]) {
+    const collection = document.getElementById("blue-pick-"+blue_counter).children;
+    const role_wrapper = collection[1];
+    role_wrapper.innerText = value["myTeam"][member]["assignedPosition"];
+
     if(value["myTeam"][member]["championId"] == 0){
       blue_counter += 1;
       continue;
     } 
-    const collection = document.getElementById("blue-pick-"+blue_counter).children;
+    
     const image_wrapper = collection[0].children;
     image_wrapper[0].src = "dragontail-13.13.1\\13.13.1\\img\\champion\\" +
     getChampNameForId(value["myTeam"][member]["championId"]) +
     ".png";
     blue_counter += 1;
   }
+
   var red_counter = 0;
   for(red_member in value["theirTeam"]) {
+    const red_collection = document.getElementById("red-pick-"+red_counter).children;
+    const red_role_wrapper = red_collection[0];
+    red_role_wrapper.innerText = value["theirTeam"][member]["assignedPosition"];
+
+
     if(value["theirTeam"][red_member]["championId"] == 0){
       red_counter += 1;
       continue;
     } 
-    const red_collection = document.getElementById("red-pick-"+red_counter).children;
+    
     const red_image_wrapper = red_collection[1].children;
     red_image_wrapper[0].src = "dragontail-13.13.1\\13.13.1\\img\\champion\\" +
     getChampNameForId(value["theirTeam"][red_member]["championId"]) +
@@ -347,8 +358,8 @@ window.darkMode.champSelectInfo((event, value) => {
 
   var red_ban_counter = 0;
   for (ban in value["bans"]["theirTeamBans"]) {
-    const blue_ban_box = document.getElementById("blue-ban-"+blue_ban_counter).children;
-    blue_ban_box[0].src = "dragontail-13.13.1\\13.13.1\\img\\champion\\" +
+    const red_ban_box = document.getElementById("red-ban-"+red_ban_counter).children;
+    red_ban_box[0].src = "dragontail-13.13.1\\13.13.1\\img\\champion\\" +
     getChampNameForId(value["bans"]["theirTeamBans"][ban]) +
     ".png";
     red_ban_counter += 1;

@@ -47,7 +47,7 @@ const createSession = async (window) => {
         time = res["data"]["timer"]["adjustedTimeLeftInPhase"]
         localPlayerId = res["data"]["localPlayerCellId"]
         actions = res["data"]["actions"]
-        //window.webContents.send('update-timer', time)
+        window.webContents.send('update-timer', time)
         window.webContents.send('champ-select-info', state)
       })
   })
