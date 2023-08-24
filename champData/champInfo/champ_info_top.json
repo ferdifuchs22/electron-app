@@ -1,0 +1,409 @@
+{
+  "10": {
+    "cid": "10",
+    "name": "Kayle",
+    "role": ["Marksman", "Skirmisher", "Battlemage", "Juggernaut"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 52.56
+  },
+  "106": {
+    "cid": "106",
+    "name": "Volibear",
+    "role": ["Skirmisher", "Juggernaut", "Diver", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 50.1
+  },
+  "107": {
+    "cid": "107",
+    "name": "Rengar",
+    "role": ["Assassin", "Artillery", "Marksman", "Juggernaut", "Diver"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 53.2
+  },
+  "114": {
+    "cid": "114",
+    "name": "Fiora",
+    "role": ["Juggernaut", "Diver", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 52.14
+  },
+  "122": {
+    "cid": "122",
+    "name": "Darius",
+    "role": ["Juggernaut", "Skirmisher", "Diver"],
+    "damage_type": "physical",
+    "scaling": ["strong_early"],
+    "winrate": 51.38
+  },
+  "126": {
+    "cid": "126",
+    "name": "Jayce",
+    "role": ["Assassin", "Artillery", "Marksman"],
+    "damage_type": "physical",
+    "scaling": ["weak_late"],
+    "winrate": 50.26
+  },
+  "133": {
+    "cid": "133",
+    "name": "Quinn",
+    "role": ["Marksman", "Skirmisher", "Assassin"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 53.78
+  },
+  "14": {
+    "cid": "14",
+    "name": "Sion",
+    "role": ["Vanguard", "Warden"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.39
+  },
+  "150": {
+    "cid": "150",
+    "name": "Gnar",
+    "role": ["Juggernaut", "Skirmisher", "Diver"],
+    "damage_type": "physical",
+    "scaling": ["weak_late"],
+    "winrate": 49.76
+  },
+  "157": {
+    "cid": "157",
+    "name": "Yasuo",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 49.49
+  },
+  "164": {
+    "cid": "164",
+    "name": "Camille",
+    "role": ["Juggernaut", "Diver", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 51.73
+  },
+  "166": {
+    "cid": "166",
+    "name": "Akshan",
+    "role": ["Marksman", "Skirmisher", "Assassin"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.58
+  },
+  "17": {
+    "cid": "17",
+    "name": "Teemo",
+    "role": [
+      "Burst",
+      "Battlemage",
+      "Artillery",
+      "Juggernaut",
+      "Marksman",
+      "Skirmisher"
+    ],
+    "damage_type": "hybrid",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.63
+  },
+  "19": {
+    "cid": "19",
+    "name": "Warwick",
+    "role": ["Vanguard", "Juggernaut", "Diver"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.39
+  },
+  "2": {
+    "cid": "2",
+    "name": "Olaf",
+    "role": ["Juggernaut", "Vanguard"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.78
+  },
+  "223": {
+    "cid": "223",
+    "name": "Tahm Kench",
+    "role": ["Vanguard", "Warden"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 51.89
+  },
+  "23": {
+    "cid": "23",
+    "name": "Tryndamere",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.1
+  },
+  "24": {
+    "cid": "24",
+    "name": "Jax",
+    "role": ["Juggernaut", "Diver", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 51.97
+  },
+  "240": {
+    "cid": "240",
+    "name": "Kled",
+    "role": ["Assassin", "Artillery", "Juggernaut"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 53.13
+  },
+  "266": {
+    "cid": "266",
+    "name": "Aatrox",
+    "role": ["Assassin", "Artillery", "Juggernaut"],
+    "damage_type": "physical",
+    "scaling": ["strong_early"],
+    "winrate": 50.49
+  },
+  "27": {
+    "cid": "27",
+    "name": "Singed",
+    "role": ["Vanguard", "Warden"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 53.14
+  },
+  "31": {
+    "cid": "31",
+    "name": "Cho'Gath",
+    "role": ["Vanguard", "Warden"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 52.64
+  },
+  "36": {
+    "cid": "36",
+    "name": "Dr. Mundo",
+    "role": ["Vanguard", "Warden"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 52.61
+  },
+  "39": {
+    "cid": "39",
+    "name": "Irelia",
+    "role": ["Vanguard"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.63
+  },
+  "41": {
+    "cid": "41",
+    "name": "Gangplank",
+    "role": ["Marksman"],
+    "damage_type": "physical",
+    "scaling": ["weak_early"],
+    "winrate": 50.76
+  },
+  "420": {
+    "cid": "420",
+    "name": "Illaoi",
+    "role": ["Skirmisher", "Juggernaut", "Diver"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.26
+  },
+  "516": {
+    "cid": "516",
+    "name": "Ornn",
+    "role": ["Vanguard", "Warden"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 52.42
+  },
+  "517": {
+    "cid": "517",
+    "name": "Sylas",
+    "role": ["Burst"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 51.54
+  },
+  "54": {
+    "cid": "54",
+    "name": "Malphite",
+    "role": ["Skirmisher", "Juggernaut", "Diver", "Vanguard"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 53.24
+  },
+  "57": {
+    "cid": "57",
+    "name": "Maokai",
+    "role": ["Vanguard", "Catcher"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 54.08
+  },
+  "58": {
+    "cid": "58",
+    "name": "Renekton",
+    "role": ["Juggernaut"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.38
+  },
+  "6": {
+    "cid": "6",
+    "name": "Urgot",
+    "role": ["Vanguard"],
+    "damage_type": "magic",
+    "scaling": ["weak_late"],
+    "winrate": 52.6
+  },
+  "67": {
+    "cid": "67",
+    "name": "Vayne",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "hybrid",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 50.26
+  },
+  "68": {
+    "cid": "68",
+    "name": "Rumble",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 50.32
+  },
+  "75": {
+    "cid": "75",
+    "name": "Nasus",
+    "role": ["Juggernaut", "Diver"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.71
+  },
+  "777": {
+    "cid": "777",
+    "name": "Yone",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 50.57
+  },
+  "78": {
+    "cid": "78",
+    "name": "Poppy",
+    "role": ["Juggernaut", "Diver", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 53.04
+  },
+  "79": {
+    "cid": "79",
+    "name": "Gragas",
+    "role": ["Burst"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 49.3
+  },
+  "8": {
+    "cid": "8",
+    "name": "Vladimir",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 51.22
+  },
+  "80": {
+    "cid": "80",
+    "name": "Pantheon",
+    "role": ["Assassin", "Artillery", "Marksman", "Juggernaut"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 52.04
+  },
+  "82": {
+    "cid": "82",
+    "name": "Mordekaiser",
+    "role": ["Battlemage", "Juggernaut", "Vanguard"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 52.6
+  },
+  "83": {
+    "cid": "83",
+    "name": "Yorick",
+    "role": ["Juggernaut", "Diver", "Assassin", "Artillery", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.23
+  },
+  "84": {
+    "cid": "84",
+    "name": "Akali",
+    "role": ["Assassin", "Battlemage", "Burst", "Juggernaut"],
+    "damage_type": "magic",
+    "scaling": ["strong_early"],
+    "winrate": 49.65
+  },
+  "85": {
+    "cid": "85",
+    "name": "Kennen",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 50.02
+  },
+  "86": {
+    "cid": "86",
+    "name": "Garen",
+    "role": ["Juggernaut"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 52.67
+  },
+  "875": {
+    "cid": "875",
+    "name": "Sett",
+    "role": ["Juggernaut", "Vanguard", "Warden"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 51.23
+  },
+  "887": {
+    "cid": "887",
+    "name": "Gwen",
+    "role": ["Battlemage", "Juggernaut"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.3
+  },
+  "897": {
+    "cid": "897",
+    "name": "K'Sante",
+    "role": ["Skirmisher", "Juggernaut", "Diver", "Vanguard"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 47.3
+  },
+  "92": {
+    "cid": "92",
+    "name": "Riven",
+    "role": ["Assassin", "Artillery", "Juggernaut"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.68
+  },
+  "98": {
+    "cid": "98",
+    "name": "Shen",
+    "role": ["Vanguard", "Warden", "Skirmisher", "Juggernaut", "Diver"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 52.1
+  }
+}

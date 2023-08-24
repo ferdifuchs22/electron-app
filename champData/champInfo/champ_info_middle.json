@@ -1,0 +1,386 @@
+{
+  "1": {
+    "cid": "1",
+    "name": "Annie",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 53.13
+  },
+  "101": {
+    "cid": "101",
+    "name": "Xerath",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.21
+  },
+  "103": {
+    "cid": "103",
+    "name": "Ahri",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.77
+  },
+  "105": {
+    "cid": "105",
+    "name": "Fizz",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 52.94
+  },
+  "111": {
+    "cid": "111",
+    "name": "Nautilus",
+    "role": ["Vanguard", "Catcher", "Warden"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 50.98
+  },
+  "112": {
+    "cid": "112",
+    "name": "Viktor",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 51.81
+  },
+  "115": {
+    "cid": "115",
+    "name": "Ziggs",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.12
+  },
+  "126": {
+    "cid": "126",
+    "name": "Jayce",
+    "role": ["Assassin", "Artillery", "Marksman"],
+    "damage_type": "physical",
+    "scaling": ["weak_late"],
+    "winrate": 51.39
+  },
+  "127": {
+    "cid": "127",
+    "name": "Lissandra",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 51.62
+  },
+  "13": {
+    "cid": "13",
+    "name": "Ryze",
+    "role": [],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_mid", "strong_late"],
+    "winrate": 50.14
+  },
+  "131": {
+    "cid": "131",
+    "name": "Diana",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.37
+  },
+  "134": {
+    "cid": "134",
+    "name": "Syndra",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 51.58
+  },
+  "136": {
+    "cid": "136",
+    "name": "Aurelion Sol",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.67
+  },
+  "142": {
+    "cid": "142",
+    "name": "Zoe",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.63
+  },
+  "157": {
+    "cid": "157",
+    "name": "Yasuo",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 50.54
+  },
+  "163": {
+    "cid": "163",
+    "name": "Taliyah",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_mid"],
+    "winrate": 52.82
+  },
+  "166": {
+    "cid": "166",
+    "name": "Akshan",
+    "role": ["Marksman", "Skirmisher", "Assassin"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.64
+  },
+  "18": {
+    "cid": "18",
+    "name": "Tristana",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.25
+  },
+  "238": {
+    "cid": "238",
+    "name": "Zed",
+    "role": ["Assassin", "Marksman", "Artillery"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.12
+  },
+  "245": {
+    "cid": "245",
+    "name": "Ekko",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 51.42
+  },
+  "246": {
+    "cid": "246",
+    "name": "Qiyana",
+    "role": ["Assassin", "Marksman"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.72
+  },
+  "268": {
+    "cid": "268",
+    "name": "Azir",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 50.91
+  },
+  "3": {
+    "cid": "3",
+    "name": "Galio",
+    "role": ["Burst", "Assassin", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.55
+  },
+  "34": {
+    "cid": "34",
+    "name": "Anivia",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 53.49
+  },
+  "38": {
+    "cid": "38",
+    "name": "Kassadin",
+    "role": [],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.17
+  },
+  "39": {
+    "cid": "39",
+    "name": "Irelia",
+    "role": ["Vanguard", "Juggernaut"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 51.11
+  },
+  "4": {
+    "cid": "4",
+    "name": "Twisted Fate",
+    "role": ["Burst"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 50.07
+  },
+  "45": {
+    "cid": "45",
+    "name": "Veigar",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.64
+  },
+  "50": {
+    "cid": "50",
+    "name": "Swain",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 53.56
+  },
+  "517": {
+    "cid": "517",
+    "name": "Sylas",
+    "role": ["Burst"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 50.75
+  },
+  "518": {
+    "cid": "518",
+    "name": "Neeko",
+    "role": ["Assassin", "Battlemage", "Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 53.94
+  },
+  "54": {
+    "cid": "54",
+    "name": "Malphite",
+    "role": ["Skirmisher", "Juggernaut", "Diver", "Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 53.24
+  },
+  "55": {
+    "cid": "55",
+    "name": "Katarina",
+    "role": [
+      "Assassin",
+      "Battlemage",
+      "Burst",
+      "Juggernaut",
+      "Diver",
+      "Marksman",
+      "Skirmisher"
+    ],
+    "damage_type": "hybrid",
+    "scaling": [],
+    "winrate": 50.46
+  },
+  "61": {
+    "cid": "61",
+    "name": "Orianna",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 51.09
+  },
+  "68": {
+    "cid": "68",
+    "name": "Rumble",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.27
+  },
+  "69": {
+    "cid": "69",
+    "name": "Cassiopeia",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 53.45
+  },
+  "7": {
+    "cid": "7",
+    "name": "LeBlanc",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 50.78
+  },
+  "711": {
+    "cid": "711",
+    "name": "Vex",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["weak_late"],
+    "winrate": 52.76
+  },
+  "777": {
+    "cid": "777",
+    "name": "Yone",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 50.33
+  },
+  "79": {
+    "cid": "79",
+    "name": "Gragas",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 50.75
+  },
+  "8": {
+    "cid": "8",
+    "name": "Vladimir",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.91
+  },
+  "80": {
+    "cid": "80",
+    "name": "Pantheon",
+    "role": ["Assassin", "Artillery", "Marksman"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 53.27
+  },
+  "84": {
+    "cid": "84",
+    "name": "Akali",
+    "role": ["Assassin", "Battlemage", "Burst"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 50.04
+  },
+  "897": {
+    "cid": "897",
+    "name": "K'Sante",
+    "role": ["Vanguard", "Skirmisher", "Juggernaut", "Diver", "Warden"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 46.28
+  },
+  "90": {
+    "cid": "90",
+    "name": "Malzahar",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["weak_late"],
+    "winrate": 52.69
+  },
+  "91": {
+    "cid": "91",
+    "name": "Talon",
+    "role": ["Assassin", "Marksman", "Artillery"],
+    "damage_type": "physical",
+    "scaling": ["strong_late"],
+    "winrate": 52.8
+  },
+  "99": {
+    "cid": "99",
+    "name": "Lux",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early"],
+    "winrate": 51.65
+  }
+}

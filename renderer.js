@@ -4,6 +4,7 @@
 }*/
 
 const c_names = { 
+  0: "None",
   266: "Aatrox",
   103: "Ahri",
   84: "Akali",
@@ -85,6 +86,7 @@ const c_names = {
   902: "Milio",
   82: "Mordekaiser",
   25: "Morgana",
+  950: "Naafiri",
   267: "Nami",
   75: "Nasus",
   111: "Nautilus",
@@ -169,6 +171,9 @@ const c_names = {
   143: "Zyra"
 }
 
+const all_node = document.getElementById("all");
+const rec_node = document.getElementById("recommendations")
+
 document
   .getElementById("show-recommendation")
   .addEventListener("click", async () => {
@@ -185,7 +190,7 @@ document
     }
   });
 
-const all_node = document.getElementById("all");
+
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -212,43 +217,7 @@ function getChampNameForId(champ_id) {
   return convertChampName(c_name)
 }
 
-document.getElementById("show-all").addEventListener("click", async () => {
-  removeAllChildNodes(all_node)
-  const champIDs = await window.darkMode.system();
-  champIDs.sort((a, b) => (a.name > b.name ? 1 : -1));
-
-  for (champ in champIDs) {
-    champ_name = champIDs[champ]["name"]
-    if (champ_name == "None"){
-      continue
-    }
-    const selector = document.createElement("div");
-    selector.classList.add("all-champion-selector");
-
-    const box = document.createElement("button");
-    box.classList.add("all-champion-box");
-    box.addEventListener('click', selectRecommendedChamp, false);
-    box.champId = champIDs[champ]["id"]
-
-    const box_img = document.createElement("img");
-    
-    var string_champ_filtered = convertChampName(champ_name);
-    
-    box_img.src =
-      "dragontail-13.13.1\\13.13.1\\img\\champion\\" +
-      string_champ_filtered +
-      ".png";
-    box.appendChild(box_img);
-
-    const name = document.createElement("div");
-    name.classList.add("all-champion-name");
-    name.innerText = champIDs[champ]["name"];
-
-    selector.appendChild(box);
-    selector.appendChild(name);
-
-    all_node.appendChild(selector);
-  }
+document.getElementById("show-all").addEventListener("click", () => {
   document.getElementById("theme-source").innerHTML = "System";
 
   let rec = document.getElementById("recommendations");
@@ -268,16 +237,6 @@ async function selectRecommendedChamp(event) {
   selectedChampId = await window.darkMode.selectedChamp(event.currentTarget.champId);
 }
 
-const rec_one = document.getElementById('rec-1');
-const rec_two = document.getElementById('rec-2');
-const rec_three = document.getElementById('rec-3');
-
-rec_one.addEventListener('click', selectRecommendedChamp, false);
-rec_one.champId = 526
-rec_two.addEventListener('click', selectRecommendedChamp, false);
-rec_two.champId = 37
-rec_three.addEventListener('click', selectRecommendedChamp, false);
-rec_three.champId = 99
 
 document
   .getElementById("confirm-champ-selection")
@@ -306,10 +265,104 @@ window.darkMode.updateTime((event, value) => {
   
 })
 
-window.darkMode.champSelectInfo((event, value) => {
-  allActions = value["actions"].flat()
-  const bannedChamps = allActions.filter(x => x.type === "ban" && x.completed).map(x => x.championId);
+function showPickableChamps(champData) {
+  removeAllChildNodes(all_node)
+  const champIDs = champData;
+
+  for (champ in champIDs) {
+    champ_id = parseInt(champIDs[champ])
+    champ_name = c_names[champ_id]
+    if(champ_name == "None") {
+      continue;
+    }
+    const selector = document.createElement("div");
+    selector.classList.add("all-champion-selector");
+
+    const box = document.createElement("button");
+    box.classList.add("all-champion-box");
+    box.addEventListener('click', selectRecommendedChamp, false);
+    box.champId = champ_id
+
+    const box_img = document.createElement("img");
+    
+    var string_champ_filtered = convertChampName(champ_name);
+    
+    box_img.src =
+      "dragontail-13.13.1\\13.13.1\\img\\champion\\" +
+      string_champ_filtered +
+      ".png";
+    box.appendChild(box_img);
+
+    const name = document.createElement("div");
+    name.classList.add("all-champion-name");
+    name.innerText = champ_name;
+
+    selector.appendChild(box);
+    selector.appendChild(name);
+
+    all_node.appendChild(selector);
+  }
+}
+
+
+function showRecommendations(recChamps) {
+  //maybe dont need function if data comes as array in form [a, b, c]
+  //var recChamps = getRecommendations(champData)
   
+  for (recommendation in recChamps) {
+    console.log(recommendation)
+    const rec_button = document.getElementById("rec-"+recommendation)
+    const champ_name_wrapper = rec_button.children[0].children
+    champ_name_wrapper[0].innerText = c_names[recChamps[recommendation]]
+
+    const champ_image_wrapper = rec_button.children[1].children
+    champ_image_wrapper[0].src = "dragontail-13.13.1\\13.13.1\\img\\champion\\" +
+    getChampNameForId(recChamps[recommendation]) +
+    ".png";
+
+    rec_button.addEventListener('click', selectRecommendedChamp, false);
+    rec_button.champId = recChamps[recommendation]
+
+  }
+}
+
+window.darkMode.selectableChamps((event, value) => {
+  showPickableChamps(value)
+})
+
+window.darkMode.recommendedChamps((event, value) => {
+  showRecommendations(value)
+})
+
+window.darkMode.currentTurn((event, value) => {
+  //REMOVE PREVIOUS HIGHLIGHHTS
+  for (let i = 0; i < 5; i++){
+    let blue_cell = document.getElementById("blue-pick-"+ i)
+    let red_cell = document.getElementById("red-pick-"+ i)
+
+    blue_cell.style.backgroundColor = ""
+    red_cell.style.backgroundColor = ""
+  }
+
+  // HIGHLIGHT AREAS FOR CURRENT TURN
+  for(action in value) {
+    let cellId = value[action]["actorCellId"]
+    console.log(cellId)
+    let allyTeam = value[action]["isAllyAction"]
+    let actionType = value[action]["type"]
+    //CONTINUE HERE FOR CELL ID STUFF
+    if(allyTeam && actionType == "pick") {
+      const cell = document.getElementById("blue-pick-"+cellId)
+      cell.style.backgroundColor = "blue"
+    } else if (actionType == "pick") {
+      const cell = document.getElementById("red-pick-"+cellId % 5)
+      cell.style.backgroundColor = "red"
+    }
+
+  }
+})
+
+window.darkMode.champSelectInfo((event, value) => {
   var blue_counter = 0;
   for(member in value["myTeam"]) {
     const collection = document.getElementById("blue-pick-"+blue_counter).children;

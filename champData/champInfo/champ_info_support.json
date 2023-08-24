@@ -1,0 +1,306 @@
+{
+  "1": {
+    "cid": "1",
+    "name": "Annie",
+    "role": ["Enchanter", "Catcher", "Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 53.57
+  },
+  "101": {
+    "cid": "101",
+    "name": "Xerath",
+    "role": ["Burst", "Artillery", "Battlemage"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.88
+  },
+  "111": {
+    "cid": "111",
+    "name": "Nautilus",
+    "role": ["Vanguard", "Catcher", "Warden"],
+    "damage_type": "",
+    "scaling": ["weak_early"],
+    "winrate": 52.02
+  },
+  "117": {
+    "cid": "117",
+    "name": "Lulu",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 48.62
+  },
+  "12": {
+    "cid": "12",
+    "name": "Alistar",
+    "role": ["Warden", "Catcher", "Vanguard"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 52.51
+  },
+  "143": {
+    "cid": "143",
+    "name": "Zyra",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52.56
+  },
+  "147": {
+    "cid": "147",
+    "name": "Seraphine",
+    "role": ["Enchanter", "Burst", "Battlemage", "Artillery", "Catcher"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 50.84
+  },
+  "16": {
+    "cid": "16",
+    "name": "Soraka",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 52.27
+  },
+  "161": {
+    "cid": "161",
+    "name": "Vel'Koz",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.97
+  },
+  "201": {
+    "cid": "201",
+    "name": "Braum",
+    "role": ["Warden", "Catcher", "Vanguard"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.64
+  },
+  "22": {
+    "cid": "22",
+    "name": "Ashe",
+    "role": ["Enchanter"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 47.17
+  },
+  "235": {
+    "cid": "235",
+    "name": "Senna",
+    "role": ["Assassin", "Artillery", "Marksman"],
+    "damage_type": "physical",
+    "scaling": ["strong_early"],
+    "winrate": 52.35
+  },
+  "25": {
+    "cid": "25",
+    "name": "Morgana",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 50.12
+  },
+  "26": {
+    "cid": "26",
+    "name": "Zilean",
+    "role": ["Enchanter", "Catcher", "Burst"],
+    "damage_type": "magic",
+    "scaling": ["weak_early"],
+    "winrate": 51.69
+  },
+  "267": {
+    "cid": "267",
+    "name": "Nami",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 50.22
+  },
+  "32": {
+    "cid": "32",
+    "name": "Amumu",
+    "role": ["Vanguard", "Catcher"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 53.17
+  },
+  "35": {
+    "cid": "35",
+    "name": "Shaco",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 52.25
+  },
+  "350": {
+    "cid": "350",
+    "name": "Yuumi",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 49.67
+  },
+  "37": {
+    "cid": "37",
+    "name": "Sona",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 53.27
+  },
+  "40": {
+    "cid": "40",
+    "name": "Janna",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 53.65
+  },
+  "412": {
+    "cid": "412",
+    "name": "Thresh",
+    "role": ["Warden", "Catcher", "Enchanter", "Vanguard"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 51.83
+  },
+  "43": {
+    "cid": "43",
+    "name": "Karma",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 49.26
+  },
+  "432": {
+    "cid": "432",
+    "name": "Bard",
+    "role": ["Enchanter", "Warden", "Catcher"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 51.43
+  },
+  "44": {
+    "cid": "44",
+    "name": "Taric",
+    "role": ["Warden", "Catcher", "Enchanter"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 54.27
+  },
+  "497": {
+    "cid": "497",
+    "name": "Rakan",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early"],
+    "winrate": 52.74
+  },
+  "50": {
+    "cid": "50",
+    "name": "Swain",
+    "role": ["Burst", "Battlemage", "Artillery", "Vanguard"],
+    "damage_type": "magic",
+    "scaling": ["strong_early"],
+    "winrate": 50.96
+  },
+  "518": {
+    "cid": "518",
+    "name": "Neeko",
+    "role": ["Burst", "Assassin", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.7
+  },
+  "526": {
+    "cid": "526",
+    "name": "Rell",
+    "role": ["Vanguard", "Catcher", "Warden"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 54.71
+  },
+  "53": {
+    "cid": "53",
+    "name": "Blitzcrank",
+    "role": ["Enchanter", "Catcher", "Warden", "Burst", "Vanguard"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 52.38
+  },
+  "555": {
+    "cid": "555",
+    "name": "Pyke",
+    "role": ["Assassin", "Marksman"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_mid", "weak_late"],
+    "winrate": 51.09
+  },
+  "57": {
+    "cid": "57",
+    "name": "Maokai",
+    "role": ["Vanguard", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early"],
+    "winrate": 53.3
+  },
+  "63": {
+    "cid": "63",
+    "name": "Brand",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": [],
+    "winrate": 50.69
+  },
+  "74": {
+    "cid": "74",
+    "name": "Heimerdinger",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 52
+  },
+  "80": {
+    "cid": "80",
+    "name": "Pantheon",
+    "role": ["Assassin", "Artillery", "Marksman"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 49.42
+  },
+  "888": {
+    "cid": "888",
+    "name": "Renata Glasc",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 51.27
+  },
+  "89": {
+    "cid": "89",
+    "name": "Leona",
+    "role": ["Warden", "Catcher", "Vanguard"],
+    "damage_type": "",
+    "scaling": [],
+    "winrate": 52.49
+  },
+  "902": {
+    "cid": "902",
+    "name": "Milio",
+    "role": ["Enchanter", "Catcher"],
+    "damage_type": "",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 52.62
+  },
+  "99": {
+    "cid": "99",
+    "name": "Lux",
+    "role": ["Burst", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.52
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "110": {
+    "cid": "110",
+    "name": "Varus",
+    "role": ["Marksman", "Skirmisher", "Assassin"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 50.69
+  },
+  "119": {
+    "cid": "119",
+    "name": "Draven",
+    "role": ["Marksman", "Skirmisher", "Assassin"],
+    "damage_type": "physical",
+    "scaling": ["strong_early"],
+    "winrate": 51.58
+  },
+  "145": {
+    "cid": "145",
+    "name": "Kai'Sa",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["weak_early"],
+    "winrate": 51.51
+  },
+  "15": {
+    "cid": "15",
+    "name": "Sivir",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["weak_early"],
+    "winrate": 50.78
+  },
+  "18": {
+    "cid": "18",
+    "name": "Tristana",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_early"],
+    "winrate": 50.88
+  },
+  "202": {
+    "cid": "202",
+    "name": "Jhin",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["weak_early"],
+    "winrate": 52.8
+  },
+  "21": {
+    "cid": "21",
+    "name": "Miss Fortune",
+    "role": ["Assassin", "Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 53.71
+  },
+  "22": {
+    "cid": "22",
+    "name": "Ashe",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 52
+  },
+  "221": {
+    "cid": "221",
+    "name": "Zeri",
+    "role": ["Juggernaut", "Skirmisher", "Diver", "Marksman"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 50.8
+  },
+  "222": {
+    "cid": "222",
+    "name": "Jinx",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 50.37
+  },
+  "236": {
+    "cid": "236",
+    "name": "Lucian",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 50.91
+  },
+  "29": {
+    "cid": "29",
+    "name": "Twitch",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["strong_late"],
+    "winrate": 52.27
+  },
+  "30": {
+    "cid": "30",
+    "name": "Karthus",
+    "role": ["Burst", "Battlemage", "Artillery"],
+    "damage_type": "magic",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 55.36
+  },
+  "360": {
+    "cid": "360",
+    "name": "Samira",
+    "role": ["Marksman", "Skirmisher", "Assassin"],
+    "damage_type": "physical",
+    "scaling": ["strong_late"],
+    "winrate": 51.65
+  },
+  "429": {
+    "cid": "429",
+    "name": "Kalista",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "hybrid",
+    "scaling": [],
+    "winrate": 49.26
+  },
+  "498": {
+    "cid": "498",
+    "name": "Xayah",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 51.19
+  },
+  "51": {
+    "cid": "51",
+    "name": "Caitlyn",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 50.01
+  },
+  "523": {
+    "cid": "523",
+    "name": "Aphelios",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 49.01
+  },
+  "67": {
+    "cid": "67",
+    "name": "Vayne",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "hybrid",
+    "scaling": ["weak_early", "strong_late"],
+    "winrate": 50.66
+  },
+  "81": {
+    "cid": "81",
+    "name": "Ezreal",
+    "role": ["Juggernaut", "Skirmisher", "Diver", "Marksman", "Assassin"],
+    "damage_type": "physical",
+    "scaling": ["strong_early", "weak_late"],
+    "winrate": 51.74
+  },
+  "895": {
+    "cid": "895",
+    "name": "Nilah",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "physical",
+    "scaling": [],
+    "winrate": 54.27
+  },
+  "96": {
+    "cid": "96",
+    "name": "Kog'Maw",
+    "role": ["Marksman", "Skirmisher"],
+    "damage_type": "hybrid",
+    "scaling": [],
+    "winrate": 53.57
+  }
+}
