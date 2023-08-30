@@ -1,6 +1,5 @@
 const fs = require("fs");
-
-const champs_map = new Map();
+const path = require('path')
 
 var bottom_ids = ["110","119","145","15","18","202","21","22","221","222","236","29","30", "360","429","498","51","523","67","81","895","96"]
 var top_ids = ["10","106","107","114","122","126","133","14","150","157","164","166","17","19","2","223","23","24","240","266","27","31","36","39","41","420","516","517","54","57","58","6","67","68","75","777","78","79","8","80","82","83","84","85","86","875","887","897","92","98"]
@@ -8,25 +7,158 @@ var jungle_ids = ["102","104","106","107","11","113","120","121","131","141","15
 var middle_ids = ["1","101","103","105","111","112","115","126","127","13","131","134","136","142","157","163","166","18","238","245","246","268","3","34","38","39","4","45","50","517","518","54","55","61","68","69","7","711","777","79","8","80","84","897","90","91","99"]
 var support_ids = ["1","101","111","117","12","143","147","16","161","201","22","235","25","26","267","32","35","350","37","40","412","43","432","44","497","50","518","526","53","555","57","63","74","80","888","89","902","99"]
 
+let rawBottomChampInfoData = fs.readFileSync(path.resolve(__dirname, 'champData\\champInfo\\champ_info_bottom.json'));
+let bottomChampInfoData = JSON.parse(rawBottomChampInfoData);
+
+let rawJungleChampInfoData = fs.readFileSync(path.resolve(__dirname, 'champData\\champInfo\\champ_info_jungle.json'));
+let jungleChampInfoData = JSON.parse(rawJungleChampInfoData);
+
+let rawMiddleChampInfoData = fs.readFileSync(path.resolve(__dirname, 'champData\\champInfo\\champ_info_middle.json'));
+let middleChampInfoData = JSON.parse(rawMiddleChampInfoData);
+
+let rawSupportChampInfoData = fs.readFileSync(path.resolve(__dirname, 'champData\\champInfo\\champ_info_support.json'));
+let supportChampInfoData = JSON.parse(rawSupportChampInfoData);
+
+let rawTopChampInfoData = fs.readFileSync(path.resolve(__dirname, 'champData\\champInfo\\champ_info_top.json'));
+let topChampInfoData = JSON.parse(rawTopChampInfoData);
+
 module.exports = {
-    recommend: function (selectableChampions, myTeamChamps, theirTeamChamps) {
-        var myAssignedRole = "bottom"
+    recommend: function (selectableChampions, myTeamChamps, theirTeamChamps, localPlayerId) {
+        var myAssignedRole = "middle"
+        var used_champ_ids = bottom_ids
+        let found = false
+
+        var myTeamComp = []
+
+        for(member in myTeamChamps) {
+            //console.log("CELLID")
+            //console.log(myTeamChamps[member]["cellId"])
+            
+            if(myTeamChamps[member]["cellId"] === localPlayerId) {
+                //console.log("foundLocal")
+                //console.log(myTeamChamps[member]["pos"])
+                found = true
+                myAssignedRole = myTeamChamps[member]["pos"]
+                if(myAssignedRole === ""){
+                    myAssignedRole = "middle"
+                    used_champ_ids = middle_ids
+                }
+
+                if (myAssignedRole === "utility") {
+                    myAssignedRole = "support"
+                    used_champ_ids = support_ids
+                }
+
+                if (myAssignedRole === "bottom") {
+                    myAssignedRole = "bottom"
+                    used_champ_ids = bottom_ids
+                }
+
+                if (myAssignedRole === "middle") {
+                    myAssignedRole = "middle"
+                    used_champ_ids = middle_ids
+                }
+
+                if (myAssignedRole === "jungle") {
+                    myAssignedRole = "jungle"
+                    used_champ_ids = jungle_ids
+                }
+
+                if (myAssignedRole === "top") {
+                    myAssignedRole = "top"
+                    used_champ_ids = top_ids
+                }
+            }
+
+            else {
+                let res = {
+                    "cid": myTeamChamps[member]["cid"],
+                    "position": myTeamChamps[member]["pos"]
+                }
+
+                if(res["position"] === ""){
+                    /*
+                    maybe find likely pos
+                    */
+                }
+
+                if (res["position"] === "utility") {
+                    if(res["cid"].toString() in supportChampInfoData) {
+                        let roles = supportChampInfoData[res["cid"].toString()]["role"]
+                        for (let role in roles) {
+                            if(!myTeamComp.includes(roles[role])){
+                                myTeamComp.push(roles[role]);
+                            }
+                        }
+                    }
+                }
+
+                if (res["position"] === "bottom") {
+                    if(res["cid"].toString() in bottomChampInfoData) {
+                        let roles = bottomChampInfoData[res["cid"].toString()]["role"]
+                        for (let role in roles) {
+                            if(!myTeamComp.includes(roles[role])){
+                                myTeamComp.push(roles[role]);
+                            }
+                        }
+                    }
+                }
+
+                if (res["position"] === "middle") {
+                    if(res["cid"].toString() in middleChampInfoData) {
+                        let roles = middleChampInfoData[res["cid"].toString()]["role"]
+                        for (let role in roles) {
+                            if(!myTeamComp.includes(roles[role])){
+                                myTeamComp.push(roles[role]);
+                            }
+                        }
+                    }
+                }
+
+                if (res["position"] === "jungle") {
+                    if(res["cid"].toString() in jungleChampInfoData) {
+                        let roles = jungleChampInfoData[res["cid"].toString()]["role"]
+                        for (let role in roles) {
+                            if(!myTeamComp.includes(roles[role])){
+                                myTeamComp.push(roles[role]);
+                            }
+                        }
+                    }
+                }
+
+                if (res["position"] === "top") {
+                    if(res["cid"].toString() in topChampInfoData) {
+                        let roles = topChampInfoData[res["cid"].toString()]["role"]
+                        for (let role in roles) {
+                            if(!myTeamComp.includes(roles[role])){
+                                myTeamComp.push(roles[role]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(!found) {
+            used_champ_ids = middle_ids
+        }
+
+        //console.log("myassignedRole: " + myAssignedRole)
 
         var result = []
         var all_suggestions = []
         // FIX CASES WHERE UNLIKELY PICK ON ENEMY TEAM AND DATA FOR CHAMP ON ROLE CANT BE FOUND!!!
-        var myTeamRoles = []
-        var theirTeamRoles = getLikelyRoles(theirTeamChamps);
+        
+        var theirTeamRoles = getLikelyPositions(theirTeamChamps);
         //console.log(theirTeamRoles)
 
-        for (id in bottom_ids) {
+        for (id in used_champ_ids) {
             //console.log(bottom_ids[id])
-            let suggestion = {"champId": bottom_ids[id], "score": 0, "winrate": 0, "counter_wr": [], "average_counter_wr": 0}
+            let suggestion = {"champId": used_champ_ids[id], "score": 0, "winrate": 0, "counter_wr": [], "average_counter_wr": 0, "good_counter_vs": [], "missing_roles": []}
             
             for (enemyRole in theirTeamRoles) {
                 //console.log(theirTeamRoles[enemyRole]["role"])
 
-                let rawEnemyCounterData = fs.readFileSync('C:\\dev\\electron-app\\champData\\matchupInfo\\lolalytics_counter_'+theirTeamRoles[enemyRole]["role"]+'.json');
+                let rawEnemyCounterData = fs.readFileSync(path.resolve(__dirname,'champData\\matchupInfo\\lolalytics_counter_'+theirTeamRoles[enemyRole]["role"]+'.json'));
                 let enemyCounterData = JSON.parse(rawEnemyCounterData)
                 let counter_data = {}
                 
@@ -35,19 +167,30 @@ module.exports = {
                 }
                 
 
-                if (bottom_ids[id] in counter_data) {
-                    suggestion["counter_wr"].push(100 - counter_data[bottom_ids[id]]["wr"])
+                if (counter_data !== undefined && used_champ_ids[id] in counter_data) {
+                    let counter_val = 100 - counter_data[used_champ_ids[id]]["wr"]
+                    if(counter_val > 51) {
+                        suggestion["good_counter_vs"].push(theirTeamRoles[enemyRole]["cid"])
+                    }
+                    suggestion["counter_wr"].push(counter_val)
                 }
-                
-                
             }
 
-            let rawBottomChampData = fs.readFileSync('C:\\dev\\electron-app\\champData\\champInfo\\champ_info_'+myAssignedRole+'.json');
-            let bottomChampData = JSON.parse(rawBottomChampData);
+            let rawChampData = fs.readFileSync(path.resolve(__dirname,'champData\\champInfo\\champ_info_'+myAssignedRole+'.json'));
+            let champData = JSON.parse(rawChampData);
 
-            let champs_data = bottomChampData
-            if (bottom_ids[id] in champs_data) {
-                suggestion["winrate"] = champs_data[bottom_ids[id]]["winrate"]
+            
+
+            let champs_data = champData
+            if (used_champ_ids[id] in champs_data) {
+                suggestion["winrate"] = champs_data[used_champ_ids[id]]["winrate"]
+
+                for(role in champs_data[used_champ_ids[id]]["role"]) {
+                    if(!myTeamComp.includes(champs_data[used_champ_ids[id]]["role"][role])){
+                        let lost_role = champs_data[used_champ_ids[id]]["role"][role];
+                        suggestion["missing_roles"].push(lost_role)
+                    }
+                }
             }
             
             //CALC FINAL VALUE HERE PROBABLY
@@ -55,7 +198,10 @@ module.exports = {
                 suggestion["average_counter_wr"] =  suggestion["counter_wr"].reduce((a, b) => a + b) / suggestion["counter_wr"].length
             }
 
-            suggestion["score"] = suggestion["winrate"] * 0.55 + suggestion["average_counter_wr"] * 0.45
+            suggestion["score"] = 
+            suggestion["winrate"] * 0.5 + 
+            suggestion["average_counter_wr"] * 0.4 + 
+            (suggestion["missing_roles"].length > 0 ? 0.1 : 0.0)
 
             all_suggestions.push(suggestion)
         }
@@ -63,10 +209,11 @@ module.exports = {
         all_suggestions = all_suggestions.filter((a) => selectableChampions.includes(parseInt(a["champId"])))
         all_suggestions.sort((a, b) => b.score - a.score)
         
-        console.log(all_suggestions.slice(0, 3))
+        //console.log(all_suggestions.slice(0, 3))
         //console.log(bottomChampData);
         for (let i=0; i < 3; i++){
-            result.push(parseInt(all_suggestions[i]["champId"]))
+            //result.push(parseInt(all_suggestions[i]["champId"]))
+            result.push(all_suggestions[i])
         }
 
         //console.log(result)
@@ -74,16 +221,19 @@ module.exports = {
     }
   };
 
-  function getLikelyRoles(theirTeamChamps) {
+  function getLikelyPositions(theirTeamChamps) {
     let roleResult = []
     let roleLikelihood = []
     
-    let rawRoleData = fs.readFileSync('C:\\dev\\electron-app\\champData\\roleInfo\\full_role_data.json');
+    let rawRoleData = fs.readFileSync(path.resolve(__dirname,'champData\\roleInfo\\full_role_data.json'));
     let RoleData = JSON.parse(rawRoleData);
 
 
     for (champ in theirTeamChamps) {
         //console.log(theirTeamChamps[champ]["cid"])
+        if(theirTeamChamps[champ]["cid"] === 0 || theirTeamChamps[champ]["cid"] === "0") {
+            continue
+        }
         roleLikelihood.push(RoleData[theirTeamChamps[champ]["cid"].toString()]);   
     }
 
@@ -117,7 +267,7 @@ module.exports = {
             console.log("NOTHING FOUND")
             break
         }
-        res = {
+        let res = {
             "cid": theirTeamChamps[currentLike]["cid"],
             "role": largest_role
         }

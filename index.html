@@ -10,11 +10,11 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
-    <title>Hello from Electron renderer!</title>
+    <title>DraftRec</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
   </head>
   <body>
-    <div class="full-layout">
+    <div class="full-layout" id="full_layout">
       <div class="banner">
         <div class="team-bans">
           <div class="ban-box" id="blue-ban-0">
@@ -33,6 +33,7 @@
             <img src="" />
           </div>
         </div>
+        <div id="application_header" class="application-header"></div>
         <div class="team-bans">
           <div class="ban-box" id="red-ban-0">
             <img src="" />
@@ -52,11 +53,8 @@
         </div>
       </div>
       <div class="banner">
-        <p class="team-header">
-          Ally Team Current theme source:
-          <strong id="theme-source">System</strong>
-        </p>
-        <div id="countdownTimer" class="timer"></div>
+        <p class="team-header">Ally Team</p>
+        <div id="countdownTimer" class="timer">Waiting for Champ Select</div>
         <p class="team-header">Enemy Team</p>
       </div>
       <div class="main-content">
@@ -65,37 +63,84 @@
             <div class="champion-portrait">
               <img src="" />
             </div>
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
           <div class="pick-box pick-box-left" id="blue-pick-1">
             <div class="champion-portrait">
               <img src="" />
             </div>
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
           <div class="pick-box pick-box-left" id="blue-pick-2">
             <div class="champion-portrait">
               <img src="" />
             </div>
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
           <div class="pick-box pick-box-left" id="blue-pick-3">
             <div class="champion-portrait">
               <img src="" />
             </div>
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
           <div class="pick-box pick-box-left" id="blue-pick-4">
             <div class="champion-portrait">
               <img src="" />
             </div>
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
-        <div class="display-section">
+
+        <div class="intro-section" id="intro_layout">
+          <div class="column card-style">
+            <figure>
+              <img src="poro_wallpaper.jpg" alt="cactus stock image" />
+            </figure>
+            <div class="card-text">
+              <h1>DraftRec</h1>
+              <p class="ellipsis">
+                Hello and welcome to DraftRec! This tool will help you
+                choose the right champion your team needs to win the game, while
+                allowing you to complete the entire champion select process
+                using the tool itself! The recommendations are created using the
+                latest statistics from lolalytics.com and consider champion
+                winrates, counter winrates, teammate synnergies and which type
+                of champion your team needs. To get started, simply keep
+                DraftRec open and jump into any live Draft!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="display-section" id="display_layout">
           <div class="display-buttons">
-            <button id="show-recommendation">RECOMMENDATION</button>
-            <button id="show-all">ALL CHAMPS</button>
+            <button id="show-recommendation" data="Recommendation"></button>
+            <button id="show-all" data="All Champions"></button>
           </div>
           <div class="display-recommendations" id="recommendations">
             <button class="recommendation" id="rec-1">
@@ -103,22 +148,18 @@
                 <div class="champion-name-text"></div>
               </div>
               <div class="champion-portrait">
-                <img
-                  src=""
-                />
+                <img src="" />
               </div>
-              <div class="recommendation-text">SYNNERGY WITH</div>
+              <div class="recommendation-text"></div>
             </button>
             <button class="recommendation" id="rec-0">
               <div class="champion-name">
                 <div class="champion-name-text"></div>
               </div>
               <div class="champion-portrait">
-                <img
-                  src=""
-                />
+                <img src="" />
               </div>
-              <div class="recommendation-text">SYNNERGY WITH</div>
+              <div class="recommendation-text"></div>
             </button>
             <button class="recommendation" id="rec-2">
               <div class="champion-name">
@@ -127,41 +168,79 @@
               <div class="champion-portrait">
                 <img src="" />
               </div>
-              <div class="recommendation-text">SYNNERGY WITH</div>
+              <div class="recommendation-text"></div>
             </button>
           </div>
-          <div class="display-all" id="all"></div>
+          <div class="display-all" id="all">
+            <div class="display-all-filter">
+              <input
+                class="display-all-name-filter"
+                type="text"
+                id="champ_text_filter"
+                name="champ_filter"
+                placeholder="Search Champion"
+              />
+            </div>
+            <div class="display-all-champs" id="all_champs"></div>
+          </div>
           <div class="submit-button">
-            <button id="confirm-champ-selection">CONFIRM</button>
+            <button id="confirm-champ-selection" data="" disabled>
+              Confirm
+            </button>
           </div>
         </div>
         <div class="team-picks">
           <div class="pick-box pick-box-right" id="red-pick-0">
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="champion-portrait">
               <img src="" />
             </div>
           </div>
           <div class="pick-box pick-box-right" id="red-pick-1">
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="champion-portrait">
               <img src="" />
             </div>
           </div>
           <div class="pick-box pick-box-right" id="red-pick-2">
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="champion-portrait">
               <img src="" />
             </div>
           </div>
           <div class="pick-box pick-box-right" id="red-pick-3">
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="champion-portrait">
               <img src="" />
             </div>
           </div>
           <div class="pick-box pick-box-right" id="red-pick-4">
-            <div class="champion-role"></div>
+            <div class="info-column">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="champion-portrait">
               <img src="" />
             </div>

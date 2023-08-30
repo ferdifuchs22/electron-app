@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, nativeTheme } = require("electron");
+const { app, BrowserWindow, ipcMain} = require("electron");
 const path = require("path");
 const leagueConnect = require("league-connect");
 const champ_select_handler = require("./handle_champ_select");
@@ -179,11 +179,12 @@ var actions = null;
 var localPlayerId = null;
 var pickableChampions = null;
 var bannableChampions = null;
+var actionlen = 0
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 1100,
-    height: 700,
+    width: 1200,
+    height: 800,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -214,18 +215,31 @@ const createSession = async (window) => {
 
   ws.subscribe("/lol-champ-select/v1/session", async (data, event) => {
     await champ_select_handler
-      .handle(event)
+      .handle(event, window)
       .catch((err) => console.log(err))
       .then((res) => {
         //console.log("res" + res)
         if (res == null) {
           return;
         }
+        //MAYBE CHECK HERE FOR OLD STATE IF WAS BANNING AND IF NEW STATE NOT BANNING THEN SEND SIGNAL
+        //oldaction
+        const oldAction = state ? getActions(localPlayerId) : undefined
 
         state = res["data"];
         time = res["data"]["timer"]["adjustedTimeLeftInPhase"];
         localPlayerId = res["data"]["localPlayerCellId"];
         actions = res["data"]["actions"];
+        var pickingChampion = false
+        //newaction
+        const newAction = getActions(localPlayerId)
+        if((!oldAction && newAction) || (newAction && oldAction && oldAction.id !== newAction.id)) {
+          pickingChampion = true
+        }
+        
+
+        //console.log("DATA::::")
+        //console.log(res["data"])
 
         const isCurrentlyBanning =
           currentTurn() &&
@@ -235,6 +249,11 @@ const createSession = async (window) => {
               x.actorCellId === localPlayerId &&
               !x.completed
           ).length > 0;
+        
+        
+
+        state["champ_select_phase"] = isCurrentlyBanning
+        //console.log(state)
 
         const allActions = actions.flat();
         //console.log("--------------------------------")
@@ -243,22 +262,41 @@ const createSession = async (window) => {
         const bannedChamps = allActions
           .filter((x) => x.type === "ban" && x.completed)
           .map((x) => x.championId);
+
+        const pickedChamps = allActions
+          .filter((x) => x.type === "pick" && x.completed)
+          .map((x) => x.championId);
         //console.log(bannedChamps)
         const selectable = (
           isCurrentlyBanning ? bannableChampions : pickableChampions
         ).filter((x) => bannedChamps.indexOf(x) === -1);
+
+        state["banned_champs"] = bannedChamps
+        //console.log(bannedChamps)
+        state["picked_champs"] = pickedChamps
+        state["picking_champion"] = pickingChampion
         //console.log(selectable)
+        //console.log(state["myTeam"])
 
-        let myTeamChamps = state["myTeam"].map((member) => ({cid: member["championId"], pos: member["assignedPosition"]}))
-        //console.log(myTeamChamps)
+        let myTeamChamps = state["myTeam"].map((member) => ({cid: member["championId"], pos: member["assignedPosition"], cellId: member["cellId"]}))
         let theirTeamChamps = state["theirTeam"].map((member) => ({cid: member["championId"], pos: member["assignedPosition"]}))
-        const recommendations = createRecommendations(selectable, myTeamChamps, theirTeamChamps);
-
+        
+        if ( allActions.length > actionlen) {
+          const recommendations = createRecommendations(selectable, myTeamChamps, theirTeamChamps, localPlayerId);
+          console.log(recommendations)
+          window.webContents.send("recommended-champs", recommendations);
+          actionlen = allActions.length
+        }
+        
+        
+        
+        let currentTurnObj = {"turn": currentTurn(), "localPlayer": localPlayerId, "myTeam": state["myTeam"], "theirTeam": state["theirTeam"]}
         //console.log("--------------------------------")
-        //console.log(currentTurn())
+        //console.log(currentTurnObj)
         //console.log("--------------------------------")
-        window.webContents.send("current-turn", currentTurn())
-        window.webContents.send("recommended-champs", recommendations);
+        window.webContents.send("current-turn", currentTurnObj)
+        
+        
         window.webContents.send("selectable-champs", selectable);
         window.webContents.send("update-timer", time);
         window.webContents.send("champ-select-info", state);
@@ -278,8 +316,8 @@ const createSession = async (window) => {
   });
 };
 
-function createRecommendations(selectableChampions, teamPickedChampions = [], enemyPickedChampions = []) {
-  return recommendation_handler.recommend(selectableChampions, teamPickedChampions, enemyPickedChampions);
+function createRecommendations(selectableChampions, teamPickedChampions = [], enemyPickedChampions = [], localPlayerId) {
+  return recommendation_handler.recommend(selectableChampions, teamPickedChampions, enemyPickedChampions, localPlayerId);
 }
 
 function currentTurn() {
@@ -333,19 +371,6 @@ const http1PickHero = async (champ_id, completed) => {
     });
   // session.close();
 };
-
-ipcMain.handle("dark-mode:toggle", () => {
-  /*if (nativeTheme.shouldUseDarkColors) {
-    nativeTheme.themeSource = "light";
-  } else {
-    nativeTheme.themeSource = "dark";
-  }*/
-  return nativeTheme.shouldUseDarkColors;
-});
-
-ipcMain.handle("dark-mode:system", async () => {
-  nativeTheme.themeSource = "system";
-});
 
 ipcMain.handle("dark-mode:confirmChamp", async (event, champ_id) => {
   http1PickHero(champ_id, true);

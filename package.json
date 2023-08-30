@@ -9,6 +9,7 @@
   "author": "Ferdinand Meyer",
   "license": "ISC",
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.1",
     "electron": "^24.3.1"
   },
   "dependencies": {
