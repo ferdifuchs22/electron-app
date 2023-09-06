@@ -610,7 +610,7 @@ window.darkMode.currentTurn((event, value) => {
         }
 
         if (cellId === value["localPlayer"]) {
-          cell.classList.add("banning-blue");
+          cell.classList.add("active-player");
           confirmButton.innerText = "BAN!";
         } else {
           cell.classList.add("banning-blue");
