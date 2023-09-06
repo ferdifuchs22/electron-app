@@ -281,12 +281,12 @@ const createSession = async (window) => {
         let myTeamChamps = state["myTeam"].map((member) => ({cid: member["championId"], pos: member["assignedPosition"], cellId: member["cellId"]}))
         let theirTeamChamps = state["theirTeam"].map((member) => ({cid: member["championId"], pos: member["assignedPosition"]}))
         
-        if ( allActions.length > actionlen) {
+        //if ( allActions.length > actionlen) {
           const recommendations = createRecommendations(selectable, myTeamChamps, theirTeamChamps, localPlayerId);
-          console.log(recommendations)
+          //console.log(recommendations)
           window.webContents.send("recommended-champs", recommendations);
           actionlen = allActions.length
-        }
+        //}
         
         
         

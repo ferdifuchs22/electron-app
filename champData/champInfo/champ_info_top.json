@@ -2,7 +2,7 @@
   "10": {
     "cid": "10",
     "name": "Kayle",
-    "role": ["Marksman", "Skirmisher", "Battlemage", "Juggernaut"],
+    "role": ["Skirmisher", "Battlemage", "Juggernaut"],
     "damage_type": "magic",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 52.56
@@ -18,7 +18,7 @@
   "107": {
     "cid": "107",
     "name": "Rengar",
-    "role": ["Assassin", "Artillery", "Marksman", "Juggernaut", "Diver"],
+    "role": ["Assassin","Diver"],
     "damage_type": "physical",
     "scaling": [],
     "winrate": 53.2
@@ -42,7 +42,7 @@
   "126": {
     "cid": "126",
     "name": "Jayce",
-    "role": ["Assassin", "Artillery", "Marksman"],
+    "role": ["Assassin", "Artillery"],
     "damage_type": "physical",
     "scaling": ["weak_late"],
     "winrate": 50.26
@@ -74,7 +74,7 @@
   "157": {
     "cid": "157",
     "name": "Yasuo",
-    "role": ["Marksman", "Skirmisher"],
+    "role": ["Skirmisher"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 49.49
@@ -103,7 +103,6 @@
       "Battlemage",
       "Artillery",
       "Juggernaut",
-      "Marksman",
       "Skirmisher"
     ],
     "damage_type": "hybrid",
@@ -137,7 +136,7 @@
   "23": {
     "cid": "23",
     "name": "Tryndamere",
-    "role": ["Marksman", "Skirmisher"],
+    "role": ["Skirmisher"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 51.1
@@ -201,7 +200,7 @@
   "41": {
     "cid": "41",
     "name": "Gangplank",
-    "role": ["Marksman"],
+    "role": [],
     "damage_type": "physical",
     "scaling": ["weak_early"],
     "winrate": 50.76
@@ -289,7 +288,7 @@
   "777": {
     "cid": "777",
     "name": "Yone",
-    "role": ["Marksman", "Skirmisher"],
+    "role": ["Skirmisher"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 50.57
@@ -321,7 +320,7 @@
   "80": {
     "cid": "80",
     "name": "Pantheon",
-    "role": ["Assassin", "Artillery", "Marksman", "Juggernaut"],
+    "role": ["Assassin", "Artillery", "Juggernaut"],
     "damage_type": "physical",
     "scaling": [],
     "winrate": 52.04

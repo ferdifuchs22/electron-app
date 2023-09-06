@@ -234,7 +234,7 @@
   "555": {
     "cid": "555",
     "name": "Pyke",
-    "role": ["Assassin", "Marksman"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_mid", "weak_late"],
     "winrate": 51.09
@@ -266,7 +266,7 @@
   "80": {
     "cid": "80",
     "name": "Pantheon",
-    "role": ["Assassin", "Artillery", "Marksman"],
+    "role": ["Assassin", "Artillery"],
     "damage_type": "physical",
     "scaling": [],
     "winrate": 49.42

@@ -2,6 +2,7 @@
     const champIDs = await window.darkMode.sendChamps()
     console.log(champIDs)
 }*/
+//const current_turn_handler = require("./renderer_handle_currentTurn");
 
 const c_names = {
   0: "None",
@@ -246,7 +247,10 @@ function clearAll() {
   for (let i = 0; i < 5; i++) {
     
     const blue_collection = document.getElementById("blue-pick-" + i);
-    blue_collection.style.backgroundColor = "";
+    //blue_collection.style.backgroundColor = "";
+    blue_collection.classList.remove("active-blue");
+    blue_collection.classList.remove("banning-blue");
+    blue_collection.classList.remove("active-player");
     const blue_role_wrapper = blue_collection.children[1];
     
     for (var j = 0; j < blue_role_wrapper.children.length; j++) {
@@ -258,7 +262,9 @@ function clearAll() {
     blue_image_wrapper[0].src = "";
     
     const red_collection = document.getElementById("red-pick-" + i);
-    red_collection.style.backgroundColor = "";
+    //red_collection.style.backgroundColor = "";
+    red_collection.classList.remove("active-red");
+    red_collection.classList.remove("banning-red");
     const red_role_wrapper = red_collection.children[0];
     
     for (var k = 0; k < red_role_wrapper.children.length; k++) {
@@ -423,6 +429,7 @@ function showRecommendations(recChamps) {
     removeAllChildNodes(rec_explanation_wrapper);
 
     const winrate_text = document.createElement("div");
+    winrate_text.classList.add("recommendation-text-item")
     winrate_text.innerText =
       "High Winrate (" + recChamps[recommendation]["winrate"] + "%)";
 
@@ -444,10 +451,12 @@ function showRecommendations(recChamps) {
       }
     }
     if (counter_string.length > 0) {
+      counter_text.classList.add("recommendation-text-item")
       counter_text.innerText = "Good Counter vs " + counter_string;
     }
 
     const missing_role_text = document.createElement("div");
+    
     let missing_role_string = "";
     for (missing_role in recChamps[recommendation]["missing_roles"]) {
       if (
@@ -461,13 +470,30 @@ function showRecommendations(recChamps) {
           " " + recChamps[recommendation]["missing_roles"][missing_role] + ", ";
       }
     }
+
     if (missing_role_string.length > 0) {
+      missing_role_text.classList.add("recommendation-text-item");
       missing_role_text.innerText = "Team needs a " + missing_role_string;
     }
+
+    const missing_damage_text = document.createElement("div");
+
+    let missing_damage_string = "";
+    if (recChamps[recommendation]["missing_damage"].length > 1) {
+      missing_damage_string = "Team needs physical and magic damage";
+      missing_damage_text.classList.add("recommendation-text-item");
+    } else if (recChamps[recommendation]["missing_damage"].length == 1){
+      missing_damage_string = "Team needs " + recChamps[recommendation]["missing_damage"][0] + " damage";
+      missing_damage_text.classList.add("recommendation-text-item");
+    }
+
+    missing_damage_text.innerText = missing_damage_string;
+
 
     rec_explanation_wrapper.appendChild(winrate_text);
     rec_explanation_wrapper.appendChild(counter_text);
     rec_explanation_wrapper.appendChild(missing_role_text);
+    rec_explanation_wrapper.appendChild(missing_damage_text);
 
     rec_button.addEventListener("click", selectRecommendedChamp, false);
     rec_button.champId = parseInt(recChamps[recommendation]["champId"]);
@@ -505,107 +531,111 @@ window.darkMode.createOrDelete((event, value) => {
 window.darkMode.currentTurn((event, value) => {
   let confirmButton = document.getElementById("confirm-champ-selection");
 
-  //REMOVE PREVIOUS HIGHLIGHHTS
-  for (let i = 0; i < 5; i++) {
-    let blue_cell = document.getElementById("blue-pick-" + i);
-    let red_cell = document.getElementById("red-pick-" + i);
+    //REMOVE PREVIOUS HIGHLIGHHTS
+    for (let i = 0; i < 5; i++) {
+      let blue_cell = document.getElementById("blue-pick-" + i);
+      let red_cell = document.getElementById("red-pick-" + i);
 
-    const blue_info_action_wrapper = blue_cell.children[1].children[0]
-    blue_info_action_wrapper.innerText = ""
+      const blue_info_action_wrapper = blue_cell.children[1].children[0];
+      blue_info_action_wrapper.innerText = "";
 
-    const red_info_action_wrapper = red_cell.children[1].children[0]
-    red_info_action_wrapper.innerText = ""
+      const red_info_action_wrapper = red_cell.children[0].children[0];
+      red_info_action_wrapper.innerText = "";
 
-    blue_cell.style.backgroundColor = "";
-    red_cell.style.backgroundColor = "";
-  }
-
-  // HIGHLIGHT AREAS FOR CURRENT TURN
-  for (action in value["turn"]) {
-    let cellId = value["turn"][action]["actorCellId"];
-    let allyTeam = value["turn"][action]["isAllyAction"];
-    let actionType = value["turn"][action]["type"];
-    //CONTINUE HERE FOR CELL ID STUFF
-    if (allyTeam && actionType == "pick") {
-      var cell = null
-      for(ally in value["myTeam"]) {
-        if(cellId === value["myTeam"][ally]["cellId"]) {
-          cell = document.getElementById("blue-pick-" + ally);
-        }
-      }
-
-      if (cell === null) {
-        console.log("nooooooooo")
-        continue
-      }
-      
-
-      if(cellId === value["localPlayer"]) {
-        cell.style.backgroundColor = "gold";
-        confirmButton.innerText = "PICK!";
-      }
-      else {
-        cell.style.backgroundColor = "blue";
-      }
-      
-      
-      const blue_info_action_wrapper = cell.children[1].children[0]
-      blue_info_action_wrapper.innerText = "picking..."
-      
-    } else if (!allyTeam && actionType == "pick") {
-      var cell = null
-      for(enemy in value["theirTeam"]) {
-        if(cellId === value["theirTeam"][enemy]["cellId"]) {
-          cell = document.getElementById("red-pick-" + enemy);
-        }
-      }
-
-      if (cell === null) {
-        console.log("nooooooooo")
-        continue
-      }
-      cell.style.backgroundColor = "red";
-      const red_info_action_wrapper = cell.children[0].children[0]
-      red_info_action_wrapper.innerText = "picking..."
-    } else if (allyTeam && actionType == "ban") {
-      var cell = null
-      for(ally in value["myTeam"]) {
-        if(cellId === value["myTeam"][ally]["cellId"]) {
-          cell = document.getElementById("blue-pick-" + ally);
-        }
-      }
-
-      if (cell === null) {
-        console.log("nooooooooo")
-        continue
-      }
-
-      if(cellId === value["localPlayer"]) {
-        cell.style.backgroundColor = "orange";
-        confirmButton.innerText = "BAN!";
-      } else {
-        cell.style.backgroundColor = "";
-      }
-      const blue_info_action_wrapper = cell.children[1].children[0]
-      blue_info_action_wrapper.innerText = "banning..."
-    } else if (!allyTeam && actionType == "ban") {
-      var cell = null
-      for(enemy in value["theirTeam"]) {
-        if(cellId === value["theirTeam"][enemy]["cellId"]) {
-          cell = document.getElementById("red-pick-" + enemy);
-        }
-      }
-
-      if (cell === null) {
-        console.log("nooooooooo")
-        continue
-      }
-      cell.style.backgroundColor = "red";
-
-      const red_info_action_wrapper = cell.children[0].children[0]
-      red_info_action_wrapper.innerText = "banning..."
+      //blue_cell.style.backgroundColor = "";
+      blue_cell.classList.remove("active-blue");
+      blue_cell.classList.remove("banning-blue");
+      blue_cell.classList.remove("active-player");
+      //red_cell.style.backgroundColor = "";
+      red_cell.classList.remove("active-red");
+      red_cell.classList.remove("banning-red");
     }
-  }
+
+    // HIGHLIGHT AREAS FOR CURRENT TURN
+    for (action in value["turn"]) {
+      let cellId = value["turn"][action]["actorCellId"];
+      let allyTeam = value["turn"][action]["isAllyAction"];
+      let actionType = value["turn"][action]["type"];
+      //CONTINUE HERE FOR CELL ID STUFF
+      if (allyTeam && actionType == "pick") {
+        var cell = null;
+        for (ally in value["myTeam"]) {
+          if (cellId === value["myTeam"][ally]["cellId"]) {
+            cell = document.getElementById("blue-pick-" + ally);
+          }
+        }
+
+        if (cell === null) {
+          console.log("nooooooooo");
+          continue;
+        }
+
+        if (cellId === value["localPlayer"]) {
+          cell.classList.add("active-player");
+          confirmButton.innerText = "PICK!";
+        } else {
+          //cell.style.backgroundColor = "blue";
+          cell.classList.add("active-blue");
+        }
+
+        const blue_info_action_wrapper = cell.children[1].children[0];
+        blue_info_action_wrapper.innerText = "picking...";
+      } else if (!allyTeam && actionType == "pick") {
+        var cell = null;
+        for (enemy in value["theirTeam"]) {
+          if (cellId === value["theirTeam"][enemy]["cellId"]) {
+            cell = document.getElementById("red-pick-" + enemy);
+          }
+        }
+
+        if (cell === null) {
+          console.log("nooooooooo");
+          continue;
+        }
+        //cell.style.backgroundColor = "red";
+        cell.classList.add("active-red");
+        const red_info_action_wrapper = cell.children[0].children[0];
+        red_info_action_wrapper.innerText = "picking...";
+      } else if (allyTeam && actionType == "ban") {
+        var cell = null;
+        for (ally in value["myTeam"]) {
+          if (cellId === value["myTeam"][ally]["cellId"]) {
+            cell = document.getElementById("blue-pick-" + ally);
+          }
+        }
+
+        if (cell === null) {
+          console.log("nooooooooo");
+          continue;
+        }
+
+        if (cellId === value["localPlayer"]) {
+          cell.classList.add("banning-blue");
+          confirmButton.innerText = "BAN!";
+        } else {
+          cell.classList.add("banning-blue");
+        }
+        const blue_info_action_wrapper = cell.children[1].children[0];
+        blue_info_action_wrapper.innerText = "banning...";
+      } else if (!allyTeam && actionType == "ban") {
+        var cell = null;
+        for (enemy in value["theirTeam"]) {
+          if (cellId === value["theirTeam"][enemy]["cellId"]) {
+            cell = document.getElementById("red-pick-" + enemy);
+          }
+        }
+
+        if (cell === null) {
+          console.log("nooooooooo");
+          continue;
+        }
+        //cell.style.backgroundColor = "red";
+        cell.classList.add("banning-red");
+
+        const red_info_action_wrapper = cell.children[0].children[0];
+        red_info_action_wrapper.innerText = "banning...";
+      }
+    }
 });
 
 window.darkMode.champSelectInfo((event, value) => {

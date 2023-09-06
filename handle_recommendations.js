@@ -24,18 +24,24 @@ let topChampInfoData = JSON.parse(rawTopChampInfoData);
 
 module.exports = {
     recommend: function (selectableChampions, myTeamChamps, theirTeamChamps, localPlayerId) {
-        var myAssignedRole = "middle"
-        var used_champ_ids = bottom_ids
-        let found = false
+        var myAssignedRole = "middle";
+        var used_champ_ids = bottom_ids;
+        let found = false;
 
-        var myTeamComp = []
+        var myTeamComp = [];
+        var myTeamDamage = [];
+        var likelyTeamPositions = [];
+
+
+        if(myTeamChamps[0]["pos"] === "") {
+            likelyTeamPositions = getLikelyPositions(myTeamChamps);
+        }
 
         for(member in myTeamChamps) {
             //console.log("CELLID")
             //console.log(myTeamChamps[member]["cellId"])
             
             if(myTeamChamps[member]["cellId"] === localPlayerId) {
-                //console.log("foundLocal")
                 //console.log(myTeamChamps[member]["pos"])
                 found = true
                 myAssignedRole = myTeamChamps[member]["pos"]
@@ -71,9 +77,15 @@ module.exports = {
             }
 
             else {
+                
                 let res = {
                     "cid": myTeamChamps[member]["cid"],
                     "position": myTeamChamps[member]["pos"]
+                }
+
+                if(likelyTeamPositions.length > 0) {
+                    res["cid"] = likelyTeamPositions[member]["cid"];
+                    res["position"] = likelyTeamPositions[member]["pos"];
                 }
 
                 if(res["position"] === ""){
@@ -84,6 +96,11 @@ module.exports = {
 
                 if (res["position"] === "utility") {
                     if(res["cid"].toString() in supportChampInfoData) {
+                        let damage_type = supportChampInfoData[res["cid"].toString()]["damage_type"]
+                        if(!myTeamDamage.includes(damage_type)){
+                            myTeamDamage.push(damage_type)
+                        }
+
                         let roles = supportChampInfoData[res["cid"].toString()]["role"]
                         for (let role in roles) {
                             if(!myTeamComp.includes(roles[role])){
@@ -95,6 +112,11 @@ module.exports = {
 
                 if (res["position"] === "bottom") {
                     if(res["cid"].toString() in bottomChampInfoData) {
+                        let damage_type = bottomChampInfoData[res["cid"].toString()]["damage_type"]
+                        if(!myTeamDamage.includes(damage_type)){
+                            myTeamDamage.push(damage_type)
+                        }
+
                         let roles = bottomChampInfoData[res["cid"].toString()]["role"]
                         for (let role in roles) {
                             if(!myTeamComp.includes(roles[role])){
@@ -106,6 +128,11 @@ module.exports = {
 
                 if (res["position"] === "middle") {
                     if(res["cid"].toString() in middleChampInfoData) {
+                        let damage_type = middleChampInfoData[res["cid"].toString()]["damage_type"]
+                        if(!myTeamDamage.includes(damage_type)){
+                            myTeamDamage.push(damage_type)
+                        }
+
                         let roles = middleChampInfoData[res["cid"].toString()]["role"]
                         for (let role in roles) {
                             if(!myTeamComp.includes(roles[role])){
@@ -117,6 +144,11 @@ module.exports = {
 
                 if (res["position"] === "jungle") {
                     if(res["cid"].toString() in jungleChampInfoData) {
+                        let damage_type = jungleChampInfoData[res["cid"].toString()]["damage_type"]
+                        if(!myTeamDamage.includes(damage_type)){
+                            myTeamDamage.push(damage_type)
+                        }
+
                         let roles = jungleChampInfoData[res["cid"].toString()]["role"]
                         for (let role in roles) {
                             if(!myTeamComp.includes(roles[role])){
@@ -128,6 +160,11 @@ module.exports = {
 
                 if (res["position"] === "top") {
                     if(res["cid"].toString() in topChampInfoData) {
+                        let damage_type = topChampInfoData[res["cid"].toString()]["damage_type"]
+                        if(!myTeamDamage.includes(damage_type)){
+                            myTeamDamage.push(damage_type)
+                        }
+
                         let roles = topChampInfoData[res["cid"].toString()]["role"]
                         for (let role in roles) {
                             if(!myTeamComp.includes(roles[role])){
@@ -153,12 +190,14 @@ module.exports = {
 
         for (id in used_champ_ids) {
             //console.log(bottom_ids[id])
-            let suggestion = {"champId": used_champ_ids[id], "score": 0, "winrate": 0, "counter_wr": [], "average_counter_wr": 0, "good_counter_vs": [], "missing_roles": []}
+            let suggestion = {"champId": used_champ_ids[id], "score": 0, "winrate": 0, "counter_wr": [], "average_counter_wr": 0, "good_counter_vs": [], "missing_roles": [], "missing_damage": []}
             
             for (enemyRole in theirTeamRoles) {
                 //console.log(theirTeamRoles[enemyRole]["role"])
-
-                let rawEnemyCounterData = fs.readFileSync(path.resolve(__dirname,'champData\\matchupInfo\\lolalytics_counter_'+theirTeamRoles[enemyRole]["role"]+'.json'));
+                if(theirTeamRoles[enemyRole]["pos"] == "none") {
+                    continue
+                }
+                let rawEnemyCounterData = fs.readFileSync(path.resolve(__dirname,'champData\\matchupInfo\\lolalytics_counter_'+theirTeamRoles[enemyRole]["pos"]+'.json'));
                 let enemyCounterData = JSON.parse(rawEnemyCounterData)
                 let counter_data = {}
                 
@@ -183,7 +222,7 @@ module.exports = {
 
             let champs_data = champData
             if (used_champ_ids[id] in champs_data) {
-                suggestion["winrate"] = champs_data[used_champ_ids[id]]["winrate"]
+                suggestion["winrate"] = champs_data[used_champ_ids[id]]["winrate"]  
 
                 for(role in champs_data[used_champ_ids[id]]["role"]) {
                     if(!myTeamComp.includes(champs_data[used_champ_ids[id]]["role"][role])){
@@ -191,6 +230,18 @@ module.exports = {
                         suggestion["missing_roles"].push(lost_role)
                     }
                 }
+                let myChampDamage =  champs_data[used_champ_ids[id]]["damage_type"]
+                if(!myTeamDamage.includes("hybrid") && !myTeamDamage.includes("physical")) {
+                    if (myChampDamage === "hybrid" || myChampDamage === "physical") {
+                        suggestion["missing_damage"].push("physical")
+                    }
+                }
+                if(!myTeamDamage.includes("hybrid") && !myTeamDamage.includes("magic")) {
+                    if (myChampDamage === "hybrid" || myChampDamage === "magic") {
+                        suggestion["missing_damage"].push("magic")
+                    }
+                }
+
             }
             
             //CALC FINAL VALUE HERE PROBABLY
@@ -199,13 +250,14 @@ module.exports = {
             }
 
             suggestion["score"] = 
-            suggestion["winrate"] * 0.5 + 
-            suggestion["average_counter_wr"] * 0.4 + 
-            (suggestion["missing_roles"].length > 0 ? 0.1 : 0.0)
+            suggestion["winrate"] * 0.45 + 
+            suggestion["average_counter_wr"] * 0.35 + 
+            (suggestion["missing_roles"].length > 0 ? 0.1 : 0.0) +
+            (suggestion["missing_damage"].length > 0 ? 0.1 : 0.0)
 
             all_suggestions.push(suggestion)
         }
-        
+        //**** ADD MISSING DAMAGE TEXT */
         all_suggestions = all_suggestions.filter((a) => selectableChampions.includes(parseInt(a["champId"])))
         all_suggestions.sort((a, b) => b.score - a.score)
         
@@ -221,7 +273,7 @@ module.exports = {
     }
   };
 
-  function getLikelyPositions(theirTeamChamps) {
+  function getLikelyPositions(teamChamps) {
     let roleResult = []
     let roleLikelihood = []
     
@@ -229,12 +281,20 @@ module.exports = {
     let RoleData = JSON.parse(rawRoleData);
 
 
-    for (champ in theirTeamChamps) {
+    for (champ in teamChamps) {
         //console.log(theirTeamChamps[champ]["cid"])
-        if(theirTeamChamps[champ]["cid"] === 0 || theirTeamChamps[champ]["cid"] === "0") {
+        if(teamChamps[champ]["cid"] === 0 || teamChamps[champ]["cid"] === "0") {
+            roleLikelihood.push({
+                "top": -1,
+                "jungle": -1,
+                "middle": -1,
+                "bottom": -1,
+                "support": -1
+              })
+              roleResult.push({"cid": 0, "pos": "none"})
             continue
         }
-        roleLikelihood.push(RoleData[theirTeamChamps[champ]["cid"].toString()]);   
+        roleLikelihood.push(RoleData[teamChamps[champ]["cid"].toString()]);   
     }
 
     availableRoles = ["top", "jungle", "middle", "bottom", "support"]
@@ -268,8 +328,8 @@ module.exports = {
             break
         }
         let res = {
-            "cid": theirTeamChamps[currentLike]["cid"],
-            "role": largest_role
+            "cid": teamChamps[currentLike]["cid"],
+            "pos": largest_role
         }
         roleResult.push(res)
         numTakenChamps += 1;

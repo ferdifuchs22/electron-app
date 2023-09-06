@@ -58,7 +58,7 @@
   "126": {
     "cid": "126",
     "name": "Jayce",
-    "role": ["Assassin", "Artillery", "Marksman"],
+    "role": ["Assassin", "Artillery"],
     "damage_type": "physical",
     "scaling": ["weak_late"],
     "winrate": 51.39
@@ -114,7 +114,7 @@
   "157": {
     "cid": "157",
     "name": "Yasuo",
-    "role": ["Marksman", "Skirmisher"],
+    "role": ["Skirmisher"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 50.54
@@ -146,7 +146,7 @@
   "238": {
     "cid": "238",
     "name": "Zed",
-    "role": ["Assassin", "Marksman", "Artillery"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 51.12
@@ -162,7 +162,7 @@
   "246": {
     "cid": "246",
     "name": "Qiyana",
-    "role": ["Assassin", "Marksman"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 51.72
@@ -262,9 +262,7 @@
       "Assassin",
       "Battlemage",
       "Burst",
-      "Juggernaut",
       "Diver",
-      "Marksman",
       "Skirmisher"
     ],
     "damage_type": "hybrid",
@@ -314,7 +312,7 @@
   "777": {
     "cid": "777",
     "name": "Yone",
-    "role": ["Marksman", "Skirmisher"],
+    "role": ["Skirmisher"],
     "damage_type": "physical",
     "scaling": [],
     "winrate": 50.33
@@ -338,7 +336,7 @@
   "80": {
     "cid": "80",
     "name": "Pantheon",
-    "role": ["Assassin", "Artillery", "Marksman"],
+    "role": ["Assassin", "Artillery"],
     "damage_type": "physical",
     "scaling": [],
     "winrate": 53.27
@@ -370,7 +368,7 @@
   "91": {
     "cid": "91",
     "name": "Talon",
-    "role": ["Assassin", "Marksman", "Artillery"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["strong_late"],
     "winrate": 52.8

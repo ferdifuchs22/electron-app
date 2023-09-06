@@ -17,7 +17,7 @@
   "104": {
     "cid": "104",
     "name": "Graves",
-    "role": ["Assassin", "Marksman", "Artillery"],
+    "role": ["Assassin", "Artillery"],
     "damage_type": "physical",
     "scaling": ["weak_early"],
     "winrate": 50.97
@@ -33,7 +33,7 @@
   "107": {
     "cid": "107",
     "name": "Rengar",
-    "role": ["Assassin", "Marksman", "Artillery"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 52.38
@@ -41,7 +41,7 @@
   "11": {
     "cid": "11",
     "name": "Master Yi",
-    "role": ["Marksman", "Skirmisher"],
+    "role": ["Skirmisher"],
     "damage_type": "hybrid",
     "scaling": [],
     "winrate": 51.55
@@ -57,7 +57,7 @@
   "120": {
     "cid": "120",
     "name": "Hecarim",
-    "role": ["Assassin", "Artillery", "Marksman", "Juggernaut", "Diver"],
+    "role": ["Assassin", "Artillery", "Juggernaut", "Diver"],
     "damage_type": "physical",
     "scaling": ["weak_early"],
     "winrate": 51.38
@@ -65,7 +65,7 @@
   "121": {
     "cid": "121",
     "name": "Kha'Zix",
-    "role": ["Assassin", "Marksman", "Artillery"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 52.6
@@ -81,7 +81,7 @@
   "141": {
     "cid": "141",
     "name": "Kayn",
-    "role": ["Assassin", "Marksman", "Juggernaut"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 51.29
@@ -113,7 +113,7 @@
   "200": {
     "cid": "200",
     "name": "Bel'Veth",
-    "role": ["Marksman", "Skirmisher"],
+    "role": ["Skirmisher"],
     "damage_type": "hybrid",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 51.94
@@ -121,7 +121,7 @@
   "203": {
     "cid": "203",
     "name": "Kindred",
-    "role": ["Marksman", "Skirmisher", "Juggernaut", "Diver"],
+    "role": ["Marksman", "Skirmisher", "Diver"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 53.64
@@ -137,7 +137,7 @@
   "238": {
     "cid": "238",
     "name": "Zed",
-    "role": ["Assassin", "Marksman", "Artillery"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 47.4
@@ -193,7 +193,7 @@
   "35": {
     "cid": "35",
     "name": "Shaco",
-    "role": ["Assassin", "Marksman", "Burst", "Battlemage", "Artillery"],
+    "role": ["Assassin", "Burst", "Battlemage", "Artillery"],
     "damage_type": "magic",
     "scaling": ["weak_mid", "strong_late"],
     "winrate": 50.71
@@ -201,7 +201,7 @@
   "421": {
     "cid": "421",
     "name": "Rek'Sai",
-    "role": ["Juggernaut", "Assassin", "Marksman"],
+    "role": ["Juggernaut", "Assassin"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 55.14
@@ -249,7 +249,7 @@
   "56": {
     "cid": "56",
     "name": "Nocturne",
-    "role": ["Juggernaut", "Assassin", "Artillery", "Marksman"],
+    "role": ["Juggernaut", "Assassin", "Artillery"],
     "damage_type": "physical",
     "scaling": ["strong_early", "weak_late"],
     "winrate": 52.53
@@ -345,7 +345,7 @@
   "91": {
     "cid": "91",
     "name": "Talon",
-    "role": ["Assassin", "Marksman", "Artillery"],
+    "role": ["Assassin"],
     "damage_type": "physical",
     "scaling": ["weak_early", "strong_late"],
     "winrate": 50.59
